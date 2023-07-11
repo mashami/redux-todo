@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "redux/reducer/todoReducer.js", "redux/reducer/index.js", "redux/reducer/todoReducer.js", "redux/action/index.js", "components/TodoList.js"  ],
   "exclude": [
     "node_modules"
   ]

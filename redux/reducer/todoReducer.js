@@ -1,37 +1,28 @@
-// store/reducer.js
+import { Add_Todo, Remove_Todo } from "../action";
+
 const initialState = {
-    todos: [],
-    isLoading: false,
-  };
-  
-  const reducer = (state = initialState, action) => {
+    list: []
+}
+
+export const todoReducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'SET_TODOS':
-        return {
-          ...state,
-          todos: action.payload,
-        };
-      case 'ADD_TODO':
-        return {
-          ...state,
-          todos: [...state.todos, action.payload],
-        };
-      case 'TOGGLE_TODO':
-        return {
-          ...state,
-          todos: state.todos.map((todo) =>
-            todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
-          ),
-        };
-      case 'DELETE_TODO':
-        return {
-          ...state,
-          todos: state.todos.filter((todo) => todo.id !== action.payload),
-        };
-      default:
-        return state;
+        case Add_Todo:
+            const { data, id } = action.payload
+            return {
+                ...state,
+                list: [
+                    ...state.list, { data, id }
+                ]
+            }
+
+        case Remove_Todo:
+            let newList = state.list.filter((newItem) => newItem.id !== action.id)
+            return {
+                ...state,
+                list: newList
+            }
+
+        default: return state
     }
-  };
-  
-  export default reducer;
-  
+}
+

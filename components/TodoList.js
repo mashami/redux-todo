@@ -8,7 +8,7 @@ export const TodoList = () => {
     const dispatch = useDispatch()
 
     const selector = useSelector(state => state.todoReducer.list)
-    console.log(selector)
+    
 
     return (
         <div className='flex flex-col gap-4 bg-slate-200 p-5'>
